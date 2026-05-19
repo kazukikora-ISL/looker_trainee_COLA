@@ -27,6 +27,7 @@ explore: store_master {
 }
 
 explore: product_master {
+  extends: [sales_data,category_master]
   join: sales_data {
     type: left_outer
     relationship: one_to_many
@@ -36,5 +37,21 @@ explore: product_master {
     type: left_outer
     relationship: many_to_one
     sql_on: ${product_master.category_id} = ${category_master.category_id} ;;
+  }
+}
+
+explore: category_master {
+  join: product_inheritance {
+    type: left_outer
+    relationship: one_to_many
+    sql_on:  ${category_master.category_id} = ${product_inheritance.category_id} ;;
+  }
+}
+
+explore: member_info {
+  join: sales_data {
+    type: left_outer
+    relationship: one_to_many
+    sql_on:  ${member_info.customer_id} = ${sales_data.customer_id} ;;
   }
 }
