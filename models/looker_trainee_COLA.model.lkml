@@ -27,7 +27,6 @@ explore: store_master {
 }
 
 explore: product_master {
-  extends: [sales_data,category_master]
   join: sales_data {
     type: left_outer
     relationship: one_to_many
