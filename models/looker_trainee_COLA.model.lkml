@@ -18,11 +18,7 @@ explore: budget_data {
   }
 }
 
-# 独立したExploreの名前を変更する
 explore: store_master {
-  label: "店舗マスタ分析"       # 画面に表示される名前
-  from: store_master          # 元にするビュー名
-
   join: budget_data {
     type: left_outer
     relationship: many_to_one
